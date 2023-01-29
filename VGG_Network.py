@@ -63,7 +63,6 @@ def Load_Data():
 
     return x,y
 
-Load_Data()
 #==============================
 # Model / data parameters
 num_classes = 4
@@ -123,16 +122,16 @@ model.add(Dense(4096, activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(4096, activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(4, activation='softmax'))
+model.add(Dense(num_classes, activation='softmax'))
 
 # ===================================
 model.compile(optimizer="adam", loss='categorical_crossentropy', metrics=['accuracy'])
+model.summary()
 
 # ===================================
-model.summary()
-model.fit(x_train, y_train, batch_size=128, epochs=5, validation_data=(x_test, y_test))
+model.fit(x_train, y_train, batch_size=128, epochs=10, validation_data=(x_test, y_test))
 
-#=====================================
+#=============Model Evaluate========================
 score = model.evaluate(x_test, y_test, verbose=0)
 
 print("Test loss:", score[0])
