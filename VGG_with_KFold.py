@@ -55,7 +55,7 @@ for train, test in kfold.split(inputs, targets):
     model.add(Dropout(0.5))
     model.add(Dense(4096, activation='relu'))
     model.add(Dropout(0.5))
-    model.add(Dense(5, activation='softmax'))
+    model.add(Dense(4, activation='softmax'))
 
     # ===================================
     model.compile(optimizer="adam", loss='categorical_crossentropy', metrics=['accuracy'])
